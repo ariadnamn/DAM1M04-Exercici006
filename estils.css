@@ -1,0 +1,388 @@
+/* estils.css
+   Paleta: Blau Profund #0C2B47, Cian #1F4A6F, Negro #1A1A1A, Blanco Roto #E8E8E8
+   Fonts: Playfair Display (títulos) + Montserrat (cuerpo)
+   Flexbox layout, sin JS, transiciones, animaciones, :has() usage
+*/
+
+/* ---------- Fonts & reset ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons+Outlined");
+
+:root{
+  --azul: #0C2B47;
+  --cian: #1F4A6F;
+  --negro: #1A1A1A;
+  --blanco: #E8E8E8;
+
+  --glass: rgba(255,255,255,0.06);
+  --glass-2: rgba(255,255,255,0.03);
+
+  --radius: 14px;
+  --gap: 18px;
+  --tran: 0.28s cubic-bezier(.2,.9,.2,1);
+  --maxw: 1100px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Montserrat", system-ui, sans-serif;
+  background: linear-gradient(180deg,var(--azul) 0%, var(--negro) 100%);
+  color: var(--blanco);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-top:86px; /* espacio para navbar sticky */
+  line-height:1.45;
+}
+
+/* ---------- NAVBAR (glass, sticky) ---------- */
+header{
+  position:fixed; inset-inline:0; top:0; z-index:120;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.navbar{
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 20px;
+}
+.brand{
+  font-family: "Playfair Display", serif;
+  font-weight:700;
+  color:var(--blanco);
+  text-decoration:none;
+  letter-spacing:0.6px;
+  font-size:1.1rem;
+}
+.main-nav{ display:flex; gap:20px; align-items:center; }
+
+/* desktop links */
+.main-nav a{
+  color:var(--blanco);
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:10px;
+  font-weight:600;
+  transition: color .22s ease, letter-spacing .22s ease, transform .18s ease;
+}
+.main-nav a:hover{ color:var(--cian); transform: translateY(-3px); }
+.main-nav a.active{ color:var(--cian); box-shadow: inset 0 -2px 0 var(--cian); }
+
+/* small-screen hamburger (uses checkbox) */
+.menu-toggle{ display:none; }
+
+/* mobile menu overlay */
+.mobile-menu{
+  display:none;
+  position:absolute;
+  inset-inline:0;
+  top:64px;
+  background: linear-gradient(180deg, rgba(12,43,71,0.96), rgba(12,43,71,0.98));
+  padding:18px 20px;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+
+/* show mobile menu when checkbox checked */
+#menu-toggle:checked ~ .mobile-menu{ display:flex; flex-direction:column; gap:12px; }
+
+/* ---------- UTIL CONTAINER ---------- */
+.container{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:28px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* ---------- COMMON UI ---------- */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:12px;
+  padding:18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* headings */
+.h1{ font-family: "Playfair Display", serif; font-size: clamp(1.6rem, 3vw, 2.6rem); color:var(--blanco); }
+.h2{ font-family: "Playfair Display", serif; font-size: 1.25rem; color:var(--blanco); margin-bottom:6px; }
+
+/* small muted */
+.muted{ color: rgba(232,232,232,0.85); font-size:0.95rem; }
+
+/* ---------- FORM (index.html) ---------- */
+form {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* form row flex (label + control) */
+.row{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* label column */
+.row label{
+  min-width:160px;
+  max-width:220px;
+  color:var(--blanco);
+  font-weight:600;
+}
+
+/* control column */
+.control{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* base input styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color:var(--blanco);
+  font-size:1rem;
+  transition: box-shadow var(--tran), transform var(--tran), border-color var(--tran);
+  outline: none;
+}
+
+/* focus animated */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 10px 30px rgba(12,43,71,0.45);
+  border-color: var(--cian);
+  transform: translateY(-2px);
+}
+
+/* :required, :valid, :invalid */
+input:required { box-shadow: 0 0 0 3px rgba(31,74,111,0.03) inset; }
+input:valid { border-color: #6fd0c9; }
+input:invalid { border-color: #e06b6b; box-shadow: 0 4px 18px rgba(224,107,107,0.06); }
+
+/* textarea */
+textarea { min-height:120px; resize:vertical; }
+
+/* number input small */
+input[type="number"] { max-width:170px; }
+
+/* color input custom small swatch look */
+.color-wrap{ display:flex; align-items:center; gap:12px; }
+input[type="color"]{ width:56px; height:40px; padding:4px; border-radius:8px; border:none; }
+
+/* range custom */
+.range-wrap{ display:flex; align-items:center; gap:12px; }
+input[type="range"]{
+  -webkit-appearance:none; appearance:none;
+  width:100%;
+  height:8px;
+  background: linear-gradient(90deg,var(--cian), var(--azul));
+  border-radius:8px;
+  outline:none;
+  transition: filter .18s ease;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--blanco);
+  border:3px solid var(--cian);
+  box-shadow:0 6px 16px rgba(0,0,0,0.3);
+  transition: transform .12s ease;
+}
+input[type="range"]:active::-webkit-slider-thumb{ transform: scale(1.06); }
+
+/* ---------- CHECKBOXES Y RADIOS PERSONALIZADOS ---------- */
+/* escondemos el input visualmente pero accesible */
+.checkbox, .radio { position: absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
+
+/* estilos de los labels actuando como controles */
+.check-label, .radio-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+  padding:8px 10px;
+  border-radius:10px;
+  transition: background var(--tran), transform .15s ease;
+}
+
+/* custom box / circle */
+.check-label .box,
+.radio-label .dot{
+  width:22px; height:22px; border-radius:6px;
+  display:inline-block; position:relative; flex-shrink:0;
+  border:2px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+  transition: background var(--tran), border-color var(--tran), box-shadow var(--tran);
+}
+
+/* radio circle style */
+.radio-label .dot{ border-radius:50%; }
+
+/* checked states using sibling selector */
+.checkbox:checked + .check-label{ background: rgba(31,74,111,0.12); transform: translateY(-2px); }
+.checkbox:checked + .check-label .box{
+  background: linear-gradient(180deg, var(--cian), var(--azul));
+  border-color: var(--cian);
+  box-shadow: 0 8px 20px rgba(31,74,111,0.28);
+}
+.checkbox:checked + .check-label .box::after{
+  content:"";
+  position:absolute; inset:5px 6px; background:transparent;
+  border-left:3px solid white; border-bottom:3px solid white;
+  transform: rotate(-45deg);
+}
+
+/* radio checked */
+.radio:checked + .radio-label{ background: rgba(31,74,111,0.12); transform: translateY(-2px); }
+.radio:checked + .radio-label .dot{
+  background: linear-gradient(180deg, var(--cian), var(--azul));
+  border-color: var(--cian);
+  box-shadow: 0 8px 20px rgba(31,74,111,0.28);
+}
+.radio:checked + .radio-label .dot::after{
+  content:""; position:absolute; left:6px; top:6px; width:8px; height:8px;
+  background:white; border-radius:50%;
+}
+
+/* container for checkboxes group */
+.checkbox-group, .radio-group{ display:flex; gap:12px; flex-wrap:wrap; }
+
+/* ---------- SELECT CUSTOM (simple) ---------- */
+select{
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--blanco) 50%), linear-gradient(135deg, var(--blanco) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right:40px;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-row{ display:flex; gap:12px; margin-top:10px; }
+button, input[type="submit"], input[type="reset"]{
+  padding:10px 14px; border-radius:12px; border:none; cursor:pointer;
+  font-weight:700; background:var(--cian); color:var(--blanco); transition: transform var(--tran), box-shadow var(--tran);
+}
+button:hover, input[type="submit"]:hover { transform: translateY(-4px); box-shadow:0 14px 36px rgba(0,0,0,0.35); }
+input[type="reset"]{ background: transparent; color:var(--blanco); border:1px solid rgba(255,255,255,0.06); }
+
+/* ---------- VALIDATIONS example (pattern titles) ---------- */
+/* name: only letters and spaces (2-60 chars) */
+input[name="fullname"]{ placeholder: "Nom i Cognoms"; }
+
+/* phone pattern example (international-ish) */
+input[name="phone"]{ placeholder: "+34 600 000 000"; }
+
+/* show small helper text */
+.helper{ font-size:0.9rem; color: rgba(232,232,232,0.85); }
+
+/* ---------- INTERACCIONS (interaccio.html) ---------- */
+#pagina-interaccio{ padding-bottom:60px; }
+
+/* sticky left nav (desktop) + hamburger mobile */
+.inter-wrap{ display:flex; gap:26px; align-items:flex-start; }
+
+/* side menu (desktop) */
+.side-menu{
+  width:250px; min-width:200px; display:flex; flex-direction:column; gap:12px;
+  position:sticky; top:96px;
+}
+
+/* menu buttons look like labels */
+.side-menu label, .side-menu a{
+  display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:10px;
+  text-decoration:none; color:var(--blanco); cursor:pointer;
+  transition: background var(--tran), transform .12s ease;
+}
+.side-menu label:hover, .side-menu a:hover{ transform: translateY(-3px); background: rgba(255,255,255,0.03); }
+
+/* MOBILE: hamburger visible under 820px */
+.hamburger{
+  display:none;
+  width:42px; height:36px; border-radius:8px; background:rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+
+/* tabs (radio-controlled) */
+.tabs{ display:flex; gap:12px; flex-wrap:wrap; }
+.tabs label{
+  padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.02); cursor:pointer; transition: var(--tran);
+}
+.tab-content{ display:none; padding:16px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
+
+/* show content when respective radio checked using :has on body */
+#pagina-interaccio:has(#tab1:checked) .content-1{ display:block; }
+#pagina-interaccio:has(#tab2:checked) .content-2{ display:block; }
+#pagina-interaccio:has(#tab3:checked) .content-3{ display:block; }
+
+/* ---------- CAROUSEL (radio buttons) ---------- */
+.carousel{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.carousel-track{
+  display:flex;
+  transition: transform .6s cubic-bezier(.22,.9,.3,1);
+  width:300%;
+}
+/* each slide */
+.slide{ flex:1 0 100%; padding:36px; display:flex; align-items:center; justify-content:center; gap:16px; }
+
+/* radio inputs control transform using :has cascade */
+#pagina-interaccio:has(#c1:checked) .carousel-track{ transform: translateX(0%); }
+#pagina-interaccio:has(#c2:checked) .carousel-track{ transform: translateX(-100%); }
+#pagina-interaccio:has(#c3:checked) .carousel-track{ transform: translateX(-200%); }
+
+/* small indicators (label as controls) */
+.carousel-indicators{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+.carousel-indicators label{
+  width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,0.12); cursor:pointer;
+}
+#c1:checked + label[for="c1"],
+#c2:checked + label[for="c2"],
+#c3:checked + label[for="c3"]{
+  background: linear-gradient(180deg, var(--cian), var(--azul));
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 820px){
+  .navbar{ padding:12px 16px; }
+  .main-nav{ display:none; }
+  .hamburger{ display:flex; }
+  .mobile-menu{ display:none; } /* shown with checkbox as earlier */
+
+  .container{ padding:18px; }
+  .inter-wrap{ flex-direction:column; }
+  .side-menu{ position:static; width:100%; display:flex; flex-direction:row; overflow:auto; padding-bottom:8px; }
+  .side-menu label { white-space:nowrap; }
+
+  .carousel-track{ flex-direction:column; width:100%; }
+  .slide{ padding:22px; }
+}
