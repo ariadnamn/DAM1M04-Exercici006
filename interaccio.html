@@ -1,138 +1,129 @@
 <!doctype html>
 <html lang="ca">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exercici-006 · Interacció CSS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exercici-006 · Interacció CSS</title>
 
-  <!-- Fonts & icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
 
-  <link rel="stylesheet" href="estils.css">
+    <link rel="stylesheet" href="estils.css">
 </head>
 <body id="pagina-interaccio">
 
-  <!-- HEADER -->
-  <header>
-    <div class="navbar">
-      <a class="brand" href="index.html">Exercici-006</a>
+    <header>
+        <div class="navbar">
+            <a class="brand" href="index.html">Ariadna's Web</a>
 
-      <!-- desktop nav (sticky) -->
-      <nav class="main-nav" aria-label="Principal">
-        <a href="index.html">Formulari</a>
-        <a href="interaccio.html" class="active">Interacció</a>
-      </nav>
+            <nav class="main-nav" aria-label="Principal">
+                <a href="index.html">Formulari</a>
+                <a href="interaccio.html" class="active">Interacció</a>
+            </nav>
 
-      <!-- mobile toggle for menu -->
-      <input id="menu-toggle" class="menu-toggle" type="checkbox" aria-hidden="true">
-      <label for="menu-toggle" class="hamburger" aria-hidden="true">
-        <span class="material-icons-outlined" style="font-size:22px;color:var(--blanco)">menu</span>
-      </label>
-    </div>
-
-    <div class="mobile-menu">
-      <a href="index.html">Formulari</a>
-      <a href="interaccio.html">Interacció</a>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <section class="card">
-      <h1 class="h1">Interactivitat amb CSS</h1>
-      <p class="muted">Toggle (mobile menu), pestanyes CSS (tabs) amb radio inputs i un carousel controlat amb radio buttons: tot sense JavaScript.</p>
-    </section>
-
-    <section class="card inter-wrap">
-
-      <!-- SIDE MENU (inclou labels que actuen com botons) -->
-      <aside class="side-menu" aria-hidden="false">
-        <label for="tab1" class="side-item">Pestanya 1</label>
-        <label for="tab2" class="side-item">Pestanya 2</label>
-        <label for="tab3" class="side-item">Pestanya 3</label>
-      </aside>
-
-      <!-- CONTENT AREA -->
-      <div style="flex:1; display:flex; flex-direction:column; gap:18px;">
-
-        <!-- TABS: radios hidden -->
-        <div>
-          <input id="tab1" type="radio" name="tabs" checked class="checkbox" />
-          <input id="tab2" type="radio" name="tabs" class="checkbox" />
-          <input id="tab3" type="radio" name="tabs" class="checkbox" />
-
-          <div class="tabs" role="tablist" aria-label="Pestanyes">
-            <label for="tab1">Tab 1</label>
-            <label for="tab2">Tab 2</label>
-            <label for "tab3">Tab 3</label>
-          </div>
-
-          <div class="tab-content content-1">
-            <h3 class="h2">Contingut Pestanya 1</h3>
-            <p class="muted">Aquesta pestanya es mostra quan <code>#tab1</code> està checked.</p>
-
-            <!-- CAROUSEL (radio controlled) -->
-            <div class="carousel">
-              <!-- radios for carousel -->
-              <input id="c1" class="checkbox" type="radio" name="carousel" checked>
-              <input id="c2" class="checkbox" type="radio" name="carousel">
-              <input id="c3" class="checkbox" type="radio" name="carousel">
-
-              <div class="carousel-track">
-                <div class="slide">
-                  <div style="text-align:center;">
-                    <h3>Slide 1</h3>
-                    <p class="muted">Contingut del primer slide.</p>
-                  </div>
-                </div>
-
-                <div class="slide">
-                  <div style="text-align:center;">
-                    <h3>Slide 2</h3>
-                    <p class="muted">Contingut del segon slide.</p>
-                  </div>
-                </div>
-
-                <div class="slide">
-                  <div style="text-align:center;">
-                    <h3>Slide 3</h3>
-                    <p class="muted">Contingut del tercer slide.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="carousel-indicators" aria-hidden="false">
-                <label for="c1"></label>
-                <label for="c2"></label>
-                <label for="c3"></label>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-content content-2">
-            <h3 class="h2">Contingut Pestanya 2</h3>
-            <p class="muted">Aquest contingut només apareix amb <code>#tab2:checked</code>.</p>
-            <p>Exemples d'interacció: labels que actuen com a botons i mostren/oculten estats mitjançant :checked i selectors avançats.</p>
-          </div>
-
-          <div class="tab-content content-3">
-            <h3 class="h2">Contingut Pestanya 3</h3>
-            <p class="muted">Aquest és el tercer contingut; pots controlar-lo amb el radio corresponent.</p>
-          </div>
+            <input id="menu-toggle" class="menu-toggle" type="checkbox" aria-hidden="true">
+            <label for="menu-toggle" class="hamburger" aria-hidden="true">
+                <span class="material-icons-outlined" style="font-size:22px;color:var(--blanco)">menu</span>
+            </label>
         </div>
 
-      </div>
-    </section>
+        <div class="mobile-menu">
+            <a href="index.html">Formulari</a>
+            <a href="interaccio.html">Interacció</a>
+        </div>
+    </header>
 
-    <section class="card">
-      <h2 class="h2">Explicació tècnica</h2>
-      <p class="muted">Les pestanyes estan controlades per inputs radio amagats. El carousel utilitza radios addicionals; el transform del track està condicionat per :has() sobre el <code>body#pagina-interaccio</code>.</p>
-    </section>
+    <main class="container">
 
-  </main>
+        <section class="card">
+            <h1 class="h1">Interactivitat</h1>
+            <p class="muted">Toggle (mobile menu), pestanyes CSS (tabs) i un carousel controlat amb radio buttons: tot sense JavaScript i amb un estil fosc i modern.</p>
+        </section>
+
+        <section class="card inter-wrap">
+
+            <aside class="side-menu" aria-hidden="false">
+                <label for="tab1" class="side-item">Pestanya 1</label>
+                <label for="tab2" class="side-item">Pestanya 2</label>
+                <label for="tab3" class="side-item">Pestanya 3</label>
+            </aside>
+
+            <div style="flex:1; display:flex; flex-direction:column; gap:18px;">
+
+                <div>
+                    <input id="tab1" type="radio" name="tabs" checked class="checkbox" />
+                    <input id="tab2" type="radio" name="tabs" class="checkbox" />
+                    <input id="tab3" type="radio" name="tabs" class="checkbox" />
+
+                    <div class="tabs" role="tablist" aria-label="Pestanyes">
+                        <label for="tab1">Tab 1</label>
+                        <label for="tab2">Tab 2</label>
+                        <label for="tab3">Tab 3</label>
+                    </div>
+
+                    <div class="tab-content content-1">
+                        <h3 class="h2">Contingut Pestanya 1</h3>
+                        <p class="muted">Aquesta pestanya es mostra quan <code>#tab1</code> està checked. Inclou el Carousel:</p>
+
+                        <div class="carousel">
+                            <input id="c1" class="checkbox" type="radio" name="carousel" checked>
+                            <input id="c2" class="checkbox" type="radio" name="carousel">
+                            <input id="c3" class="checkbox" type="radio" name="carousel">
+
+                            <div class="carousel-track">
+                                <div class="slide">
+                                    <div style="text-align:center;">
+                                        <h3>Slide 1</h3>
+                                        <p class="muted">Contingut del primer slide.</p>
+                                    </div>
+                                </div>
+
+                                <div class="slide">
+                                    <div style="text-align:center;">
+                                        <h3>Slide 2</h3>
+                                        <p class="muted">Contingut del segon slide.</p>
+                                    </div>
+                                </div>
+
+                                <div class="slide">
+                                    <div style="text-align:center;">
+                                        <h3>Slide 3</h3>
+                                        <p class="muted">Contingut del tercer slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-indicators" aria-hidden="false">
+                                <label for="c1"></label>
+                                <label for="c2"></label>
+                                <label for="c3"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content content-2">
+                        <h3 class="h2">Contingut Pestanya 2</h3>
+                        <p class="muted">Aquest contingut només apareix amb <code>#tab2:checked</code>.</p>
+                        <p>Exemples d'interacció: labels que actuen com a botons i mostren/oculten estats mitjançant <code>:checked</code> i selectors avançats.</p>
+                    </div>
+
+                    <div class="tab-content content-3">
+                        <h3 class="h2">Contingut Pestanya 3</h3>
+                        <p class="muted">Aquest és el tercer contingut; pots controlar-lo amb el radio corresponent.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="h2">Explicació tècnica</h2>
+            <p class="muted">Les pestanyes i el carousel estan controlats per inputs radio amagats. La lògica d'activació i canvi visual utilitza el selector <code>:has()</code> sobre el <code>body#pagina-interaccio</code>.</p>
+        </section>
+
+    </main>
 
 </body>
 </html>

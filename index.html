@@ -1,217 +1,199 @@
 <!doctype html>
 <html lang="ca">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exercici-006 · Formulari</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Formulari</title>
 
-  <!-- Preconnect fonts & Material Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
 
-  <link rel="stylesheet" href="estils.css">
+    <link rel="stylesheet" href="estils.css">
 </head>
 <body>
 
-  <!-- HEADER / NAV -->
-  <header>
-    <div class="navbar">
-      <a class="brand" href="index.html">Exercici-006</a>
+    <header>
+        <div class="navbar">
+            <a class="brand" href="index.html">Ariadna's Web</a> 
 
-      <!-- desktop nav -->
-      <nav class="main-nav" aria-label="Principal">
-        <a href="index.html" class="active">Formulari</a>
-        <a href="interaccio.html">Interacció</a>
-      </nav>
+            <nav class="main-nav" aria-label="Principal">
+                <a href="index.html" class="active">Formulari</a>
+                <a href="interaccio.html">Interacció</a>
+            </nav>
 
-      <!-- mobile hamburger (checkbox toggles .mobile-menu) -->
-      <input id="menu-toggle" class="menu-toggle" type="checkbox" aria-hidden="true">
-      <label for="menu-toggle" class="hamburger" aria-hidden="true">
-        <span class="material-icons-outlined" style="font-size:22px;color:var(--blanco)">menu</span>
-      </label>
+            <input id="menu-toggle" class="menu-toggle" type="checkbox" aria-hidden="true">
+            <label for="menu-toggle" class="hamburger" aria-hidden="true">
+                <span class="material-icons-outlined" style="font-size:22px;color:var(--blanco)">menu</span>
+            </label>
 
-    </div>
-
-    <!-- mobile menu (same links) -->
-    <div class="mobile-menu">
-      <a href="index.html">Formulari</a>
-      <a href="interaccio.html">Interacció</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="card">
-      <h1 class="h1">Formulari – Validació & estil</h1>
-      <p class="muted">Tot el formulari està validat amb HTML + CSS. Prova els camps i mira els estats :focus, :valid i :invalid.</p>
-
-      <form novalidate>
-        <!-- Nom complet: pattern (lletres + espais) -->
-        <div class="row">
-          <label for="fullname">Nom complet *</label>
-          <div class="control">
-            <input id="fullname" name="fullname" type="text" required
-                   pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,60}$"
-                   title="Introdueix el teu nom i cognoms (només lletres i espais, 2-60 caràcters)">
-            <div class="helper">Nom i cognoms. Pattern: només lletres i espais.</div>
-          </div>
         </div>
 
-        <!-- Correu (email required) -->
-        <div class="row">
-          <label for="email">Correu electrònic *</label>
-          <div class="control">
-            <input id="email" name="email" type="email" required placeholder="exemple@domini.cat">
-            <div class="helper">Camp obligatori. Format: exemple@domini.cat</div>
-          </div>
+        <div class="mobile-menu">
+            <a href="index.html">Formulari</a>
+            <a href="interaccio.html">Interacció</a>
         </div>
+    </header>
 
-        <!-- Telèfon (pattern) -->
-        <div class="row">
-          <label for="phone">Telèfon</label>
-          <div class="control">
-            <input id="phone" name="phone" type="tel"
-                   pattern="^\+?\d{6,15}$"
-                   title="Introdueix un telèfon vàlid. Format: +34600111222 or 600111222">
-            <div class="helper">Accepta nombres de 6 a 15 dígits, opcional + prefix.</div>
-          </div>
-        </div>
+    <main class="container">
+        <section class="card">
+            <h1 class="h1">Formulari – Validació & Estil Fosc</h1>
+            <p class="muted">Tots els camps estan estilitzats per adaptar-se al disseny fosc. Prova els camps i observa els estats <code>:focus</code>, <code>:valid</code> i <code>:invalid</code>.</p>
 
-        <!-- Edat -->
-        <div class="row">
-          <label for="age">Edat</label>
-          <div class="control">
-            <input id="age" name="age" type="number" min="14" max="120" step="1" placeholder="Ex: 28">
-            <div class="helper">Edat mínima 14.</div>
-          </div>
-        </div>
+            <form novalidate>
+                <div class="row">
+                    <label for="fullname">Nom complet *</label>
+                    <div class="control">
+                        <input id="fullname" name="fullname" type="text" required
+                                pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,60}$"
+                                title="Introdueix el teu nom i cognoms (només lletres i espais, 2-60 caràcters)">
+                        <div class="helper">Nom i cognoms. Pattern: només lletres i espais.</div>
+                    </div>
+                </div>
 
-        <!-- Data naixement -->
-        <div class="row">
-          <label for="bday">Data de naixement</label>
-          <div class="control">
-            <input id="bday" name="bday" type="date">
-            <div class="helper">Selecciona la teva data de naixement.</div>
-          </div>
-        </div>
+                <div class="row">
+                    <label for="email">Correu electrònic *</label>
+                    <div class="control">
+                        <input id="email" name="email" type="email" required placeholder="exemple@domini.cat">
+                        <div class="helper">Camp obligatori. Format: exemple@domini.cat</div>
+                    </div>
+                </div>
 
-        <!-- Franja horària -->
-        <div class="row">
-          <label for="hora">Franja horària</label>
-          <div class="control">
-            <input id="hora" name="hora" type="time">
-            <div class="helper">Hora preferida de contacte.</div>
-          </div>
-        </div>
+                <div class="row">
+                    <label for="phone">Telèfon</label>
+                    <div class="control">
+                        <input id="phone" name="phone" type="tel"
+                                pattern="^\+?\d{6,15}$"
+                                title="Introdueix un telèfon vàlid. Format: +34600111222 or 600111222">
+                        <div class="helper">Accepta nombres de 6 a 15 dígits, opcional + prefix.</div>
+                    </div>
+                </div>
 
-        <!-- Color preferit -->
-        <div class="row">
-          <label for="color">Color preferit</label>
-          <div class="control color-wrap">
-            <input id="color" name="color" type="color" value="#1F4A6F">
-            <div class="helper">Mostra un swatch amb el color seleccionat.</div>
-          </div>
-        </div>
+                <div class="row">
+                    <label for="age">Edat</label>
+                    <div class="control">
+                        <input id="age" name="age" type="number" min="14" max="120" step="1" placeholder="Ex: 28">
+                        <div class="helper">Edat mínima 14.</div>
+                    </div>
+                </div>
 
-        <!-- Range -->
-        <div class="row">
-          <label for="satisfaction">Satisfacció</label>
-          <div class="control range-wrap">
-            <input id="satisfaction" name="satisfaction" type="range" min="0" max="10" value="7">
-            <div class="helper">Control lliscant (0-10).</div>
-          </div>
-        </div>
+                <div class="row">
+                    <label for="bday">Data de naixement</label>
+                    <div class="control">
+                        <input id="bday" name="bday" type="date">
+                        <div class="helper">Selecciona la teva data de naixement.</div>
+                    </div>
+                </div>
 
-        <!-- Aficions (checkbox múltiple) -->
-        <div class="row">
-          <label>Aficions</label>
-          <div class="control checkbox-group">
-            <div>
-              <input id="af1" class="checkbox" type="checkbox" name="hobby" value="music">
-              <label for="af1" class="check-label"><span class="box"></span> Música</label>
-            </div>
+                <div class="row">
+                    <label for="hora">Franja horària</label>
+                    <div class="control">
+                        <input id="hora" name="hora" type="time">
+                        <div class="helper">Hora preferida de contacte.</div>
+                    </div>
+                </div>
 
-            <div>
-              <input id="af2" class="checkbox" type="checkbox" name="hobby" value="cine">
-              <label for="af2" class="check-label"><span class="box"></span> Cinema</label>
-            </div>
+                <div class="row">
+                    <label for="color">Color preferit</label>
+                    <div class="control color-wrap">
+                        <input id="color" name="color" type="color" value="#1F4A6F">
+                        <div class="helper">Mostra un swatch amb el color seleccionat.</div>
+                    </div>
+                </div>
 
-            <div>
-              <input id="af3" class="checkbox" type="checkbox" name="hobby" value="lectura">
-              <label for="af3" class="check-label"><span class="box"></span> Lectura</label>
-            </div>
+                <div class="row">
+                    <label for="satisfaction">Satisfacció</label>
+                    <div class="control range-wrap">
+                        <input id="satisfaction" name="satisfaction" type="range" min="0" max="10" value="7">
+                        <div class="helper">Control lliscant (0-10).</div>
+                    </div>
+                </div>
 
-            <div>
-              <input id="af4" class="checkbox" type="checkbox" name="hobby" value="esports">
-              <label for="af4" class="check-label"><span class="box"></span> Esports</label>
-            </div>
-          </div>
-        </div>
+                <div class="row">
+                    <label>Aficions</label>
+                    <div class="control checkbox-group">
+                        <div>
+                            <input id="af1" class="checkbox" type="checkbox" name="hobby" value="music">
+                            <label for="af1" class="check-label"><span class="box"></span> Música</label>
+                        </div>
 
-        <!-- Nivell d'estudis (radio) -->
-        <div class="row">
-          <label>Nivell d'estudis</label>
-          <div class="control radio-group">
-            <div>
-              <input id="r1" class="radio" type="radio" name="nivel" value="secundaria" required>
-              <label for="r1" class="radio-label"><span class="dot"></span> Secundària</label>
-            </div>
+                        <div>
+                            <input id="af2" class="checkbox" type="checkbox" name="hobby" value="cine">
+                            <label for="af2" class="check-label"><span class="box"></span> Cinema</label>
+                        </div>
 
-            <div>
-              <input id="r2" class="radio" type="radio" name="nivel" value="fp">
-              <label for="r2" class="radio-label"><span class="dot"></span> FP</label>
-            </div>
+                        <div>
+                            <input id="af3" class="checkbox" type="checkbox" name="hobby" value="lectura">
+                            <label for="af3" class="check-label"><span class="box"></span> Lectura</label>
+                        </div>
 
-            <div>
-              <input id="r3" class="radio" type="radio" name="nivel" value="universitat">
-              <label for="r3" class="radio-label"><span class="dot"></span> Universitat</label>
-            </div>
-          </div>
-          <div class="helper">Selecciona un nivell (requerit).</div>
-        </div>
+                        <div>
+                            <input id="af4" class="checkbox" type="checkbox" name="hobby" value="esports">
+                            <label for="af4" class="check-label"><span class="box"></span> Esports</label>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Pais (select) -->
-        <div class="row">
-          <label for="pais">País</label>
-          <div class="control">
-            <select id="pais" name="pais" required>
-              <option value="">-- Selecciona --</option>
-              <option value="es">Espanya</option>
-              <option value="fr">França</option>
-              <option value="uk">Regne Unit</option>
-              <option value="other">Altres</option>
-            </select>
-            <div class="helper">Camp obligatori.</div>
-          </div>
-        </div>
+                <div class="row">
+                    <label>Nivell d'estudis</label>
+                    <div class="control radio-group">
+                        <div>
+                            <input id="r1" class="radio" type="radio" name="nivel" value="secundaria" required>
+                            <label for="r1" class="radio-label"><span class="dot"></span> Secundària</label>
+                        </div>
 
-        <!-- Comentaris -->
-        <div class="row">
-          <label for="coment">Comentaris</label>
-          <div class="control">
-            <textarea id="coment" name="coment" placeholder="Escriu aquí..."></textarea>
-            <div class="helper">Comentaris o observacions (opcional).</div>
-          </div>
-        </div>
+                        <div>
+                            <input id="r2" class="radio" type="radio" name="nivel" value="fp">
+                            <label for="r2" class="radio-label"><span class="dot"></span> FP</label>
+                        </div>
 
-        <!-- Buttons -->
-        <div class="row">
-          <label></label>
-          <div class="control btn-row">
-            <input type="submit" value="Enviar">
-            <input type="reset" value="Esborrar">
-          </div>
-        </div>
+                        <div>
+                            <input id="r3" class="radio" type="radio" name="nivel" value="universitat">
+                            <label for="r3" class="radio-label"><span class="dot"></span> Universitat</label>
+                        </div>
+                    </div>
+                    <div class="helper">Selecciona un nivell (requerit).</div>
+                </div>
 
-      </form>
-    </section>
+                <div class="row">
+                    <label for="pais">País</label>
+                    <div class="control">
+                        <select id="pais" name="pais" required>
+                            <option value="">-- Selecciona --</option>
+                            <option value="es">Espanya</option>
+                            <option value="fr">França</option>
+                            <option value="uk">Regne Unit</option>
+                            <option value="other">Altres</option>
+                        </select>
+                        <div class="helper">Camp obligatori.</div>
+                    </div>
+                </div>
 
-    <section class="card">
-      <h2 class="h2">Notes sobre validació</h2>
-      <p class="muted">Els camps amb * són obligatoris. Prova a introduir valors incorrectes per veure l'estat <code>:invalid</code> i el missatge del <code>title</code>.</p>
-    </section>
-  </main>
+                <div class="row">
+                    <label for="coment">Comentaris</label>
+                    <div class="control">
+                        <textarea id="coment" name="coment" placeholder="Escriu aquí..."></textarea>
+                        <div class="helper">Comentaris o observacions (opcional).</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label></label>
+                    <div class="control btn-row">
+                        <input type="submit" value="Enviar">
+                        <input type="reset" value="Esborrar">
+                    </div>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="card">
+            <h2 class="h2">Notes sobre validació</h2>
+            <p class="muted">Els camps amb * són obligatoris. Prova a introduir valors incorrectes per veure l'estat <code>:invalid</code> i el missatge del <code>title</code>.</p>
+        </section>
+    </main>
 
 </body>
 </html>
